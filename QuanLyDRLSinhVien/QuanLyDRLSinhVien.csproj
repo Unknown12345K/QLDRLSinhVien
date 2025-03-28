@@ -90,7 +90,9 @@
     <Compile Include="query\NguoiDungQuery.cs" />
     <Compile Include="query\PermissionQuery.cs" />
     <Compile Include="query\QuyenQuery.cs" />
-    <Compile Include="SINHVIEN.cs" />
+    <Compile Include="SINHVIEN.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SINHVIEN.Designer.cs">
       <DependentUpon>SINHVIEN.cs</DependentUpon>
     </Compile>
