@@ -90,6 +90,10 @@
     <Compile Include="query\NguoiDungQuery.cs" />
     <Compile Include="query\PermissionQuery.cs" />
     <Compile Include="query\QuyenQuery.cs" />
+    <Compile Include="SINHVIEN.cs" />
+    <Compile Include="SINHVIEN.Designer.cs">
+      <DependentUpon>SINHVIEN.cs</DependentUpon>
+    </Compile>
     <Compile Include="SuaThongTinCaNhan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +121,9 @@
     </Compile>
     <EmbeddedResource Include="QuanLyPhanQuyen.resx">
       <DependentUpon>QuanLyPhanQuyen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SINHVIEN.resx">
+      <DependentUpon>SINHVIEN.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SuaThongTinCaNhan.resx">
       <DependentUpon>SuaThongTinCaNhan.cs</DependentUpon>
