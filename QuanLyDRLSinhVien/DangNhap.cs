@@ -44,10 +44,10 @@ namespace QuanLyDeCuongProject
 
         private void btSIGNIn_Click(object sender, EventArgs e)
         {
-            
 
-            string email = txtEmail.Text;
-            string password = txtPassword.Text;
+
+            string email = "admin@gmail.com"; //txtEmail.Text;
+            string password = "12345"; //txtPassword.Text;
             
             if (email == "") { MessageBox.Show("Vui lòng nhập email!"); }
             else if (password == "")

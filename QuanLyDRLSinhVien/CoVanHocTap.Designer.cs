@@ -1,6 +1,6 @@
 ﻿namespace QuanLyDeCuongProject
 {
-    partial class GIANGVIEN
+    partial class CoVanHocTap
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GIANGVIEN));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CoVanHocTap));
             this.label1 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -79,9 +79,9 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.label1.Location = new System.Drawing.Point(979, 372);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(315, 29);
+            this.label1.Size = new System.Drawing.Size(255, 29);
             this.label1.TabIndex = 101;
-            this.label1.Text = "DANH SÁCH GIẢNG VIÊN";
+            this.label1.Text = "DANH SÁCH CỐ VẤN";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // button3
@@ -214,7 +214,7 @@
             this.groupBox1.Size = new System.Drawing.Size(913, 500);
             this.groupBox1.TabIndex = 99;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "THÔNG TIN GIẢNG VIÊN";
+            this.groupBox1.Text = "THÔNG TIN CỐ VẤN";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // btluu
@@ -477,17 +477,17 @@
             // 
             // columnHeader1
             // 
-            this.columnHeader1.Text = "Mã Giảng Viên";
+            this.columnHeader1.Text = "Mã cố vấn";
             this.columnHeader1.Width = 125;
             // 
             // columnHeader2
             // 
-            this.columnHeader2.Text = "Tên Giảng Viên";
+            this.columnHeader2.Text = "Tên cố vấn";
             this.columnHeader2.Width = 138;
             // 
             // columnHeader3
             // 
-            this.columnHeader3.Text = "Mã Đơn Vị";
+            this.columnHeader3.Text = "Lớp phụ trách";
             this.columnHeader3.Width = 211;
             // 
             // panel1

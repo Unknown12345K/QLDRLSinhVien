@@ -11,7 +11,6 @@ using System.Runtime.Remoting.Contexts;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -19,15 +18,15 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace QuanLyDeCuongProject
 {
-    public partial class SINHVIEN : Form
+    public partial class SinhVien : Form
     {
         Helpers helper = new Helpers();
-        public SINHVIEN()
+        public SinhVien()
         {
             InitializeComponent();
         }
         string maND;
-        SqlConnection cn = new SqlConnection($@"Data Source={Const.ServerName};Initial Catalog=QuanLyDeCuong;Integrated Security=True"); 
+        SqlConnection cn = new SqlConnection($@"Data Source={Const.ServerName};Initial Catalog=QuanLyDRLSinhVien;Integrated Security=True"); 
         public DataTable LayDL(string cm)
         {
             DataTable dt = new DataTable();
@@ -68,7 +67,7 @@ namespace QuanLyDeCuongProject
             cbbgt.Items.Add("Nu");
             cbbgt.Items.Add("Nam");
 
-            DataTable dt1 = LayDL("select MaSV, HoTen, Email, SoDT,DiaChi, NgaySinh, GioiTinh, TenLop, TenNganh, Ten  from SINHVIEN sv, NguoiDung nd, LOP l, NGANH n, HINHTHUCDAOTAO dt where sv.MaND = nd.MaNguoiDung and l.MaLop = sv.MaLop and n.MaNganh = sv.MaNganh and sv.HinhThucDaoTao = dt.Ma");
+            DataTable dt1 = LayDL("select MaSV, HoTen, Email, SoDT,DiaChi, NgaySinh, GioiTinh, TenLop, TenNganh, Ten  from SINHVIEN sv, NguoiDung nd, LOP l, NGANH n, HINHTHUCDAOTAO dt where sv.MaND = nd.MaNguoiDung and l.MaLop = sv.MaLop and l.MaNganh = n.MaNganh and sv.HinhThucDaoTao = dt.Ma");
             DataTable dt = LayDL("select * from LOP");
             cbLOP.DataSource = dt;
             cbLOP.DisplayMember = "TenLop";
@@ -90,7 +89,7 @@ namespace QuanLyDeCuongProject
         private void listSV_Click(object sender, EventArgs e)
         {
             int vt = listSV.SelectedItems[0].Index;
-            string sql = $"select MaSV, HoTen, Email, SoDT,DiaChi, NgaySinh, GioiTinh, TenLop, TenNganh, Ten  from SINHVIEN sv, NguoiDung nd, LOP l, NGANH n, HINHTHUCDAOTAO dt where sv.MaND = nd.MaNguoiDung and l.MaLop = sv.MaLop and n.MaNganh = sv.MaNganh and sv.HinhThucDaoTao = dt.Ma and sv.MaSV='{listSV.Items[vt].SubItems[0].Text}'";
+            string sql = $"select MaSV, HoTen, Email, SoDT,DiaChi, NgaySinh, GioiTinh, TenLop, TenNganh, Ten  from SINHVIEN sv, NguoiDung nd, LOP l, NGANH n, HINHTHUCDAOTAO dt where sv.MaND = nd.MaNguoiDung and l.MaLop = sv.MaLop and n.MaNganh = l.MaNganh and sv.HinhThucDaoTao = dt.Ma and sv.MaSV='{listSV.Items[vt].SubItems[0].Text}'";
             DataTable dt = LayDL(sql);
             txtMssv.Text = dt.Rows[0]["MaSV"].ToString();
             txtHoten.Text = dt.Rows[0]["HoTen"].ToString();
@@ -192,7 +191,7 @@ namespace QuanLyDeCuongProject
                 if (maND.Length != 0)
                 {
                     string sql0 = $"insert into NguoiDung(MaNguoiDung,HoTen,NgaySinh,GioiTinh,SoDT,Email,DiaChi,MaQuyen) Values('{maND}','{hoten}','{ngay}','{gt}','{sdt}','{email}',N'{diachi}',4)";
-                    sql = $"insert into SINHVIEN(MaSV, MaND,MaNganh,HinhThucDaoTao,MaLop) Values('{mssv}', '{maND}','{nganh}','{htdt}','{lop}');";
+                    sql = $"insert into SINHVIEN(MaSV, MaND,HinhThucDaoTao,MaLop) Values('{mssv}', '{maND}','{htdt}','{lop}');";
                     SqlCommand cd = new SqlCommand(sql0, cn);
                     cn.Open();
                     cd.ExecuteNonQuery();
@@ -205,7 +204,7 @@ namespace QuanLyDeCuongProject
 
 
                     MessageBox.Show("Lưu Thành Công!");
-                    DataTable dt1 = LayDL("select MaSV, HoTen, Email, SoDT,DiaChi, NgaySinh, GioiTinh, TenLop, TenNganh, Ten  from SINHVIEN sv, NguoiDung nd, LOP l, NGANH n, HINHTHUCDAOTAO dt where sv.MaND = nd.MaNguoiDung and l.MaLop = sv.MaLop and n.MaNganh = sv.MaNganh and sv.HinhThucDaoTao = dt.Ma");
+                    DataTable dt1 = LayDL("select MaSV, HoTen, Email, SoDT,DiaChi, NgaySinh, GioiTinh, TenLop, TenNganh, Ten  from SINHVIEN sv, NguoiDung nd, LOP l, NGANH n, HINHTHUCDAOTAO dt where sv.MaND = nd.MaNguoiDung and l.MaLop = sv.MaLop and n.MaNganh = l.MaNganh and sv.HinhThucDaoTao = dt.Ma");
                     hienthi(dt1);
                     reset();
                 }
@@ -333,7 +332,7 @@ namespace QuanLyDeCuongProject
             try
             { 
                 string sqlNguoiDung = $@"UPDATE NguoiDung SET HoTen = '{hoten}', NgaySinh = '{ngaysinh.ToString("MM/dd/yyyy")}', GioiTinh = '{gt}', SoDT = '{sdt}', Email = '{email}', DiaChi = N'{diachi}' WHERE MaNguoiDung = (SELECT MaND FROM SINHVIEN WHERE MaSV = '{mssv}')";
-                string sqlSinhVien = $@"UPDATE SINHVIEN SET MaNganh = '{nganh}', HinhThucDaoTao = '{htdt}', MaLop = '{lop}' WHERE MaSV = '{mssv}'";
+                string sqlSinhVien = $@"UPDATE SINHVIEN SET HinhThucDaoTao = '{htdt}', MaLop = '{lop}' WHERE MaSV = '{mssv}'";
                 SqlCommand cmdNguoiDung = new SqlCommand(sqlNguoiDung, cn);
                 cn.Open();
                 cmdNguoiDung.ExecuteNonQuery();

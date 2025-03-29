@@ -55,17 +55,23 @@
       <DependentUpon>DangNhap.cs</DependentUpon>
     </Compile>
     <Compile Include="data\DataBase.cs" />
+    <Compile Include="DoiMatKhau.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DoiMatKhau.Designer.cs">
+      <DependentUpon>DoiMatKhau.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="GIANGVIEN.cs">
+    <Compile Include="CoVanHocTap.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GIANGVIEN.Designer.cs">
-      <DependentUpon>GIANGVIEN.cs</DependentUpon>
+    <Compile Include="CoVanHocTap.Designer.cs">
+      <DependentUpon>CoVanHocTap.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers.cs" />
     <Compile Include="Home.cs">
@@ -90,11 +96,11 @@
     <Compile Include="query\NguoiDungQuery.cs" />
     <Compile Include="query\PermissionQuery.cs" />
     <Compile Include="query\QuyenQuery.cs" />
-    <Compile Include="SINHVIEN.cs">
+    <Compile Include="SinhVien.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SINHVIEN.Designer.cs">
-      <DependentUpon>SINHVIEN.cs</DependentUpon>
+    <Compile Include="SinhVien.Designer.cs">
+      <DependentUpon>SinhVien.cs</DependentUpon>
     </Compile>
     <Compile Include="SuaThongTinCaNhan.cs">
       <SubType>Form</SubType>
@@ -106,8 +112,11 @@
     <EmbeddedResource Include="DangNhap.resx">
       <DependentUpon>DangNhap.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GIANGVIEN.resx">
-      <DependentUpon>GIANGVIEN.cs</DependentUpon>
+    <EmbeddedResource Include="CoVanHocTap.resx">
+      <DependentUpon>CoVanHocTap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DoiMatKhau.resx">
+      <DependentUpon>DoiMatKhau.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
@@ -124,8 +133,8 @@
     <EmbeddedResource Include="QuanLyPhanQuyen.resx">
       <DependentUpon>QuanLyPhanQuyen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SINHVIEN.resx">
-      <DependentUpon>SINHVIEN.cs</DependentUpon>
+    <EmbeddedResource Include="SinhVien.resx">
+      <DependentUpon>SinhVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SuaThongTinCaNhan.resx">
       <DependentUpon>SuaThongTinCaNhan.cs</DependentUpon>

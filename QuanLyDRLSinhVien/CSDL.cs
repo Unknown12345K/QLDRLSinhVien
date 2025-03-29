@@ -16,7 +16,7 @@ namespace QuanLyDeCuongProject
        
 
         public static string svName = @"ADMIN\SQLEXPRESS";
-        public static string dbName = "QuanLyDeCuong";
+        public static string dbName = "QuanLyDRLSinhVien";
 
         public static string MaGV = "";
         public static string TenHienThi = "";
@@ -27,7 +27,7 @@ namespace QuanLyDeCuongProject
 
         public static void KetNoi()
         {
-            string sql = $@"Data Source={Const.ServerName};Initial Catalog=QuanLyDeCuong;Integrated Security=True";
+            string sql = $@"Data Source={Const.ServerName};Initial Catalog=QuanLyDRLSinhVien;Integrated Security=True";
             cn = new SqlConnection(sql);
 
         }
@@ -35,7 +35,6 @@ namespace QuanLyDeCuongProject
         {
             DataTable dt = new DataTable();
             SqlDataAdapter data = new SqlDataAdapter(sql, cn);
-           
             data.Fill(dt);
             return dt;
         }

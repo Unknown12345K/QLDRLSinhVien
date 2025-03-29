@@ -15,7 +15,7 @@ namespace QuanLyDeCuongProject.Data
        
         public DataBase()
         {
-            connect = new SqlConnection($@"Data Source={Const.ServerName};Initial Catalog=QuanLyDeCuong;Integrated Security=True");
+            connect = new SqlConnection($@"Data Source={Const.ServerName};Initial Catalog=QuanLyDRLSinhVien;Integrated Security=True");
         }
 
         public DataTable ExecuteQuery(string sql)

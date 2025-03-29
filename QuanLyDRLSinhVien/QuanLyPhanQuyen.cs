@@ -44,7 +44,7 @@ namespace QuanLyDeCuongProject
 
                 return;
             }
-            if (!helpers.checkPermission(26, Modify.taiKhoan.ma_quyen))
+            if (!helpers.checkPermission(18, Modify.taiKhoan.ma_quyen))
             {
                 
                 this.Close();

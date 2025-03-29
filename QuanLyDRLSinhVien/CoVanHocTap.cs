@@ -12,11 +12,11 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace QuanLyDeCuongProject
 {
-    public partial class GIANGVIEN : Form
+    public partial class CoVanHocTap : Form
     {
         string mand = "";
         Helpers helpers = new Helpers();
-        public GIANGVIEN()
+        public CoVanHocTap()
         {
             InitializeComponent();
         }
@@ -33,7 +33,7 @@ namespace QuanLyDeCuongProject
             {
                 string txt = listDS.SelectedItems[0].SubItems[0].Text;
 
-                string sql = "select MaGV, HoTen, NgaySinh, GioiTinh, MaDV, HocHam, HocVi, SoDT, MaDV, Email, DiaChi, MaND From GIANGVIEN gv, NGUOIDUNG nd where gv.MaND = nd.MaNguoiDung and  MaGV='" + txt + "'";
+                string sql = "select MaGV, HoTen, NgaySinh, GioiTinh, MaDV, HocHam, HocVi, SoDT, MaDV, Email, DiaChi, MaND From COVANHOCTAP gv, NGUOIDUNG nd where gv.MaND = nd.MaNguoiDung and  MaGV='" + txt + "'";
                 DataTable dt = new DataTable();
                 dt = CSDL.LayDuLieu(sql);
                 mand = dt.Rows[0]["MaND"].ToString();
@@ -115,7 +115,7 @@ namespace QuanLyDeCuongProject
             string hocham = cbhocham.SelectedItem.ToString();
             string hocvi = cbhocvi.SelectedItem.ToString();
 
-            string sqlGV = $"update GIANGVIEN set MaDV = '{dv}',HocHam = N'{hocham}',HocVi = N'{hocvi}' where MaGV ='{gv}'  ";
+            string sqlGV = $"update COVANHOCTAP set MaDV = '{dv}',HocHam = N'{hocham}',HocVi = N'{hocvi}' where MaGV ='{gv}'  ";
             string sqlND = $"update NguoiDung set NgaySinh = '{ngaysinh}', HoTen = '{hoten}', GioiTinh = '{gt}', SoDT = '{sdt}', DiaChi = '{diachi}' where MaNguoiDung = '{mand}' ";
 
             try
@@ -162,16 +162,16 @@ namespace QuanLyDeCuongProject
 
             try
             {
-                // Lấy MaND từ bảng GIANGVIEN dựa trên MaGV
-                string sqlCheckMaND = $"SELECT MaND FROM GIANGVIEN WHERE MaGV = '{gv}'";
+                // Lấy MaND từ bảng COVANHOCTAP dựa trên MaGV
+                string sqlCheckMaND = $"SELECT MaND FROM COVANHOCTAP WHERE MaGV = '{gv}'";
                 DataTable dt = CSDL.LayDuLieu(sqlCheckMaND);
 
                 if (dt.Rows.Count > 0)
                 {
                     string maND = dt.Rows[0]["MaND"].ToString();
 
-                    // Xóa dữ liệu trong bảng GIANGVIEN
-                    string sqlDeleteGiangVien = $"DELETE FROM GIANGVIEN WHERE MaGV = '{gv}'";
+                    // Xóa dữ liệu trong bảng COVANHOCTAP
+                    string sqlDeleteGiangVien = $"DELETE FROM COVANHOCTAP WHERE MaGV = '{gv}'";
                     CSDL.XuLy(sqlDeleteGiangVien);
 
                     // Xóa dữ liệu trong bảng NGUOIDUNG
@@ -199,7 +199,7 @@ namespace QuanLyDeCuongProject
         private void btnTim_Click(object sender, EventArgs e)
         {
             string ma = txtMaGv.Text;
-            string sql = "select MaGV , HoTen, NgaySinh, GioiTinh ,MaDV,HocHam ,HocVi, SoDT, MaDV, Email, DiaChi From GIANGVIEN gv, NGUOIDUNG nd where  gv.MaND = nd.MaNguoiDung and MaGV=N'" + ma + "'";
+            string sql = "select MaGV , HoTen, NgaySinh, GioiTinh ,MaDV,HocHam ,HocVi, SoDT, MaDV, Email, DiaChi From COVANHOCTAP gv, NGUOIDUNG nd where  gv.MaND = nd.MaNguoiDung and MaGV=N'" + ma + "'";
             DataTable dt = new DataTable();
             dt = CSDL.LayDuLieu(sql);
             listDS.Items.Clear();
@@ -243,7 +243,7 @@ namespace QuanLyDeCuongProject
             cbGioi.Items.Clear();
             cbGioi.Items.Add("Nam");
             cbGioi.Items.Add("Nữ");
-            string sql1 = "select MaGV , HoTen, NgaySinh, GioiTinh ,MaDV,HocHam ,HocVi, SoDT, MaDV, Email, DiaChi From GIANGVIEN gv, NGUOIDUNG nd where  gv.MaND = nd.MaNguoiDung";
+            string sql1 = "select MaGV , HoTen, NgaySinh, GioiTinh ,MaDV,HocHam ,HocVi, SoDT, MaDV, Email, DiaChi From COVANHOCTAP gv, NGUOIDUNG nd where  gv.MaND = nd.MaNguoiDung";
             DataTable dt1 = new DataTable();
             dt1 = CSDL.LayDuLieu(sql1);//
             listDS.Items.Clear();
@@ -267,7 +267,7 @@ namespace QuanLyDeCuongProject
             helpers.XulySangToi(false, button4, button2, button3, btluu);
             clearFields();
 
-            string sql = "select top 1 MaGV from  GIANGVIEN order by MaGV desc ";
+            string sql = "select top 1 MaGV from  COVANHOCTAP order by MaGV desc ";
             DataTable dt = CSDL.LayDuLieu(sql);
             string maxUserId = CSDL.LayDuLieu("select top 1 MaNguoiDung from NguoiDung order by MaNguoiDung desc").Rows[0][0].ToString();
             mand = "ND" + (int.Parse(maxUserId.Substring(2, maxUserId.Length - 2)) + 1).ToString("0000");
@@ -319,8 +319,8 @@ namespace QuanLyDeCuongProject
                            $"VALUES ('{mand}', N'{hoten}', '{ngaysinh}', N'{gt}', '{sdt}', '{email}', N'{diachi}')";
             CSDL.XuLy(sqlND);
 
-            // Lưu thông tin vào bảng GIANGVIEN
-            string sqlGV = $"INSERT INTO GIANGVIEN (MaGV, MaDV, HocHam, HocVi, MaND) " +
+            // Lưu thông tin vào bảng COVANHOCTAP
+            string sqlGV = $"INSERT INTO COVANHOCTAP (MaGV, MaDV, HocHam, HocVi, MaND) " +
                            $"VALUES ('{gv}', '{dv}', N'{hocham}', N'{hocvi}', '{mand}')";
             CSDL.XuLy(sqlGV);
 
@@ -370,7 +370,7 @@ namespace QuanLyDeCuongProject
         private void txtMaGv_TextChanged(object sender, EventArgs e)
         {
            
-            string sql1 = $"select MaGV , HoTen, NgaySinh, GioiTinh ,MaDV,HocHam ,HocVi, SoDT, MaDV, Email, DiaChi From GIANGVIEN gv, NGUOIDUNG nd where  gv.MaND = nd.MaNguoiDung and (gv.MaGV LIKE (N'%{txtMaGv.Text}%') or nd.HoTen LIKE (N'%{txtMaGv.Text}%'))";
+            string sql1 = $"select MaGV , HoTen, NgaySinh, GioiTinh ,MaDV,HocHam ,HocVi, SoDT, MaDV, Email, DiaChi From COVANHOCTAP gv, NGUOIDUNG nd where  gv.MaND = nd.MaNguoiDung and (gv.MaGV LIKE (N'%{txtMaGv.Text}%') or nd.HoTen LIKE (N'%{txtMaGv.Text}%'))";
             DataTable dt1 = CSDL.LayDuLieu(sql1);
 
             dt1 = CSDL.LayDuLieu(sql1);//

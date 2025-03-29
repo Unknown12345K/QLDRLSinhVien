@@ -75,51 +75,52 @@ namespace QuanLyDeCuongProject
 
         private void MonHoc_Click(object sender, EventArgs e)
         {
-            if(Modify.taiKhoan.ma_quyen != 4)
-            {
-                  this.Hide();
-                QLMonHoc mon_hoc_frm = new QLMonHoc();
-                mon_hoc_frm.ShowDialog();
-                this.Show();
-            }
-            else
-            {
-                MessageBox.Show($"Bạn không có quyền vào chức năng này", "Lỗi truy cập", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //if(Modify.taiKhoan.ma_quyen != 4)
+            //{
+            //      this.Hide();
+            //    QLMonHoc mon_hoc_frm = new QLMonHoc();
+            //    mon_hoc_frm.ShowDialog();
+            //    this.Show();
+            //}
+            //else
+            //{
+            //    MessageBox.Show($"Bạn không có quyền vào chức năng này", "Lỗi truy cập", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
            
         }
 
         private void QLDeCuong_Click(object sender, EventArgs e)
         {
 
-            this.Hide();
-            DeCuong de_cuong_frm = new DeCuong();
-            de_cuong_frm.ShowDialog();
-            this.Show();
+            //this.Hide();
+            //DeCuong de_cuong_frm = new DeCuong();
+            //de_cuong_frm.ShowDialog();
+            //this.Show();
 
         }
 
         private void QLNganh_Click(object sender, EventArgs e)
         {
 
-            if (Modify.taiKhoan.ma_quyen != 4 && Modify.taiKhoan.ma_quyen != 2)
-            {
-                this.Hide();
-                QL_Nganh nganh_frm = new QL_Nganh();
-                nganh_frm.ShowDialog();
-                this.Show();
-            }
-            else
-            {
-                MessageBox.Show($"Bạn không có quyền vào chức năng này", "Lỗi truy cập", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //if (Modify.taiKhoan.ma_quyen != 4 && Modify.taiKhoan.ma_quyen != 2)
+            //{
+            //    this.Hide();
+            //    QL_Nganh nganh_frm = new QL_Nganh();
+            //    nganh_frm.ShowDialog();
+            //    this.Show();
+            //}
+            //else
+            //{
+            //    MessageBox.Show($"Bạn không có quyền vào chức năng này", "Lỗi truy cập", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
           
 
         }
 
         private void QLPhanQuyen_Click(object sender, EventArgs e)
         {
-            if (Modify.taiKhoan.ma_quyen != 4 && Modify.taiKhoan.ma_quyen != 2)
+            
+            if (Modify.taiKhoan.ma_quyen == 1|| Modify.taiKhoan.ma_quyen == 3)
             {
                 this.Hide();
                 QuanLyPhanQuyen phan_quyen_frm = new QuanLyPhanQuyen();
@@ -130,7 +131,6 @@ namespace QuanLyDeCuongProject
             {
                 MessageBox.Show($"Bạn không có quyền vào chức năng này", "Lỗi truy cập", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
 
         }
 
@@ -139,7 +139,7 @@ namespace QuanLyDeCuongProject
             if (Modify.taiKhoan.ma_quyen != 4 && Modify.taiKhoan.ma_quyen != 2)
             {
                 this.Hide();
-                GIANGVIEN giang_vien_frm = new GIANGVIEN();
+                CoVanHocTap giang_vien_frm = new CoVanHocTap();
                 giang_vien_frm.ShowDialog();
                 this.Show();
             }
@@ -156,7 +156,7 @@ namespace QuanLyDeCuongProject
             if (Modify.taiKhoan.ma_quyen != 4)
             {
                 this.Hide();
-                SINHVIEN sinh_vien_frm = new SINHVIEN();
+                SinhVien sinh_vien_frm = new SinhVien();
                 sinh_vien_frm.ShowDialog();
                 this.Show();
             }
